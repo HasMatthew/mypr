@@ -1,0 +1,21 @@
+%head
+  %title mypr
+  %link{:rel => "stylesheet", :type => "text/css", :href => "/css/bootstrap.min.css"}
+  %script{:src => '/js/bootstrap.min.js'}
+%html
+  .container
+    .navbar.navbar-default
+      .container-fluid
+        .navbar-header
+          %a.navbar-brand{:href => '/'} My Pull Requests
+        .navbar-collapse.collapse
+          %ul.nav.navbar-nav
+            %li.active
+              %a{:href => '/'} All
+            %li
+              %a{:href => '/configure'} Configure Repositories
+          %ul.nav.navbar-nav.navbar-right
+            %li
+              %a{:href => '/auth'} Auth
+    .jumbotron
+      = yield

@@ -1,0 +1,17 @@
+%h1 Pick Your Favorites
+%form{:action => '/configure', :method => 'post'}
+  - @orgs_with_repos.each do |org_with_repos|
+    .org
+      %h3
+        = org_with_repos['login']
+      - org_with_repos['repos'].each do |repo|
+        - @checked = !@selected_repos.select {|selected_repo| selected_repo['full_name'] == repo['full_name']}.empty?
+        - @repo_json = repo.delete_if {|k, v| !['name', 'full_name', 'html_url'].include? k }.to_json
+        .repo_name
+          %fieldset
+            %span.checkbox-wrapper
+              %input{:type => 'checkbox', :name => @repo_json, :checked => @checked}
+              %span
+            %label
+              = repo['name']
+  %input{:type => 'submit'}
