@@ -1,12 +1,12 @@
 - @repos_with_pulls.each do |repo_with_pulls|
   .repo
     %h3
-      %a{:href => "#{repo_with_pulls['html_url']}"}
+      %a{:href => "#{repo_with_pulls['html_url']}", :target => '_blank'}
         = repo_with_pulls['full_name']
     %ul
       - repo_with_pulls['pulls'].each do |pull|
         %li.pulls
-          %a{:href => "#{pull['html_url']}"}
+          %a{:href => "#{pull['html_url']}", :target => '_blank'}
             = pull['title']
           .body
             = pull['body']

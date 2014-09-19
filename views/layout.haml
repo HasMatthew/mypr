@@ -10,12 +10,11 @@
           %a.navbar-brand{:href => '/'} My Pull Requests
         .navbar-collapse.collapse
           %ul.nav.navbar-nav
-            %li.active
-              %a{:href => '/'} All
             %li
               %a{:href => '/configure'} Configure Repositories
           %ul.nav.navbar-nav.navbar-right
             %li
-              %a{:href => '/auth'} Auth
+              %a{:href => 'https://github.com/HasMatthew/mypr', :target => '_blank'}
+                %b View Code on Github
     .jumbotron
       = yield
