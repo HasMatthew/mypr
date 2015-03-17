@@ -27,7 +27,14 @@ def orgs
 end
 
 def repos org
-    github_api("/orgs/#{org}/repos", {'per_page' => '1000'}).sort_by {|repo| repo['full_name'] }
+    all = []
+    page = 1
+    begin
+        current_page = github_api("/orgs/#{org}/repos", {'per_page' => '100', 'page' => page}).sort_by {|repo| repo['full_name'] }
+        all += current_page
+        page += 1
+    end while current_page.length > 0
+    all
 end
 
 def pulls owner, repo
